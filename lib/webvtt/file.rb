@@ -21,8 +21,8 @@ module Webvtt
 
     def parse
       remove_bom
-      if !webvtt_line?(file.first)
-        raise #Webvtt::MalformedError
+      if !webvtt_line?(file.lines.first)
+        raise Webvtt::MalformedError
       end
       collected_lines = []
       file_lines = file.dup.lines.to_a
