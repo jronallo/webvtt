@@ -20,8 +20,9 @@ module Webvtt
     end
 
     def parse
+      remove_bom
       if !webvtt_line?(file.first)
-        raise Webvtt::MalformedError
+        raise #Webvtt::MalformedError
       end
       collected_lines = []
       file_lines = file.dup.lines.to_a
@@ -44,6 +45,10 @@ module Webvtt
 
     def webvtt_line?(line)
       line[0,6] == 'WEBVTT'
+    end
+
+    def remove_bom
+      file.gsub!("\xEF\xBB\xBF", '')
     end
 
 private

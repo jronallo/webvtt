@@ -26,6 +26,12 @@ class WebvttFileTest < Test::Unit::TestCase
     assert Webvtt::File.new(file)    
   end
 
+  test "should handle files with a BOM and different line endings" do
+    file = "﻿WEBVTT FILE\r\n\r\n1\r\n00:00:00 --> 00:00:05\r\nIt was a frightening time but it also was a time of great student intrigue"
+    p file
+    assert Webvtt::File.new(file)    
+  end
+
   test "should have a file method" do
     assert @vtt.respond_to?(:file)
   end
