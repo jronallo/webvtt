@@ -5,7 +5,11 @@ module Webvtt
 
     def initialize(input_file)
       if input_file.is_a?(String)
-        @file = ::File.read(input_file)
+        if ::File.exist?(input_file)
+          @file = ::File.read(input_file)
+        else
+          @file = input_file
+        end
       elsif input_file.is_a?(::File)
         @file = input_file.read
       else

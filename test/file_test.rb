@@ -21,6 +21,11 @@ class WebvttFileTest < Test::Unit::TestCase
     assert Webvtt::File.new(file)
   end
 
+  test "should create a new File with a String as the contents of the WEBVTT file" do
+    file = "WEBVTT FILE\n\n1\n00:00:00 --> 00:00:05\nIt was a frightening time but it also was a time of great student intrigue"
+    assert Webvtt::File.new(file)    
+  end
+
   test "should have a file method" do
     assert @vtt.respond_to?(:file)
   end
