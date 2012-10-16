@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Webvtt
   class File
 
@@ -5,6 +6,7 @@ module Webvtt
 
     def initialize(input_file)
       if input_file.is_a?(String)
+        input_file = input_file.encode('UTF-8')
         if ::File.exist?(input_file)
           @file = ::File.read(input_file)
         else
@@ -48,7 +50,7 @@ module Webvtt
     end
 
     def remove_bom
-      file.gsub!("\xEF\xBB\xBF", '')
+      file.gsub!("\uFEFF", '')
     end
 
 private

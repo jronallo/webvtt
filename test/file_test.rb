@@ -27,8 +27,7 @@ class WebvttFileTest < Test::Unit::TestCase
   end
 
   test "should handle files with a BOM and different line endings" do
-    file = "﻿WEBVTT FILE\r\n\r\n1\r\n00:00:00 --> 00:00:05\r\nIt was a frightening time but it also was a time of great student intrigue"
-    p file
+    file = "\uFEFFWEBVTT FILE\r\n\r\n1\r\n00:00:00 --> 00:00:05\r\nIt was a frightening time but it also was a time of great student intrigue"
     assert Webvtt::File.new(file)    
   end
 

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Webvtt
   class Cue
     attr_accessor :identifier, :start, :end, :settings, :text
