@@ -14,9 +14,7 @@ page to increase SEO and allow for jumping to sections of the video.
 # Install
 
 ```
-git clone
-rake build
-gem install pkg/webvtt.x.x.x.gem
+gem install webvtt
 ```
 
 # Usage
