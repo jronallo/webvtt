@@ -33,8 +33,10 @@ module Webvtt
         line.chomp!
         
         next if webvtt_line?(line)
-        if line.empty? 
-          add_a_cue(collected_lines) if !collected_lines.empty?
+        if line.empty?
+          if !collected_lines.empty? and !notes?(collected_lines)
+            add_a_cue(collected_lines) 
+          end
           collected_lines = []
         elsif !line.empty? and file_lines.length == (index + 1)
           collected_lines << line
@@ -66,6 +68,14 @@ private
       end
       cue_opts[:text] = collected_lines[2..-1].join('')
       cues << Cue.new(cue_opts)
+    end
+
+    def notes?(collected_lines)
+      if collected_lines.first.match(/^NOTES/)
+        true
+      else
+        false
+      end
     end
 
   end
