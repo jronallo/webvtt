@@ -4,6 +4,7 @@ Parse WebVTT files with Ruby.
 The main goal is just to extract the text out with start and end times.
 The parsing does not conform the [WebVTT specification](http://dev.w3.org/html5/webvtt/) at this point.
 
+[![Build Status](https://travis-ci.org/jronallo/webvtt.png)](https://travis-ci.org/jronallo/webvtt)
 
 # Story
 
