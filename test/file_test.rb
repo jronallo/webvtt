@@ -23,12 +23,12 @@ class WebvttFileTest < Test::Unit::TestCase
 
   test "should create a new File with a String as the contents of the WEBVTT file" do
     file = "WEBVTT FILE\n\n1\n00:00:00 --> 00:00:05\nIt was a frightening time but it also was a time of great student intrigue"
-    assert Webvtt::File.new(file)    
+    assert Webvtt::File.new(file)
   end
 
   test "should handle files with a BOM and different line endings" do
     file = "\uFEFFWEBVTT FILE\r\n\r\n1\r\n00:00:00 --> 00:00:05\r\nIt was a frightening time but it also was a time of great student intrigue"
-    assert Webvtt::File.new(file)    
+    assert Webvtt::File.new(file)
   end
 
   test "should have a file method" do
@@ -39,7 +39,7 @@ class WebvttFileTest < Test::Unit::TestCase
     assert @vtt.file.include?('WEBVTT')
   end
 
-  test "should have a list of cues" do    
+  test "should have a list of cues" do
     assert @vtt.respond_to?(:cues)
     assert @vtt.cues.is_a?(Array)
   end
@@ -51,14 +51,14 @@ class WebvttFileTest < Test::Unit::TestCase
   test "first cue should be correct" do
     first_cue = @vtt.cues.first
     assert_equal "1", first_cue.identifier
-    assert_equal "00:00:00", first_cue.start
+    assert_equal "00:00:00.000", first_cue.start
     assert_equal "00:00:03.000", first_cue.end
     assert_equal "D:vertical A:start", first_cue.settings
     assert_equal "I grew up in Eastern North Carolina, <b>Edgecombe</b> County", first_cue.text
   end
 
   test "multiline cue text should be correct" do
-    assert_equal "on a tobacco and dairy farm outside of Tarboro.", @vtt.cues.last.text
+    assert_equal "on a tobacco and dairy farm outside of\nTarboro.", @vtt.cues.last.text
   end
 
 end

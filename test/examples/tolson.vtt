@@ -3,7 +3,7 @@ WEBVTT
 NOTES This is a note.
 
 1
-00:00:00 --> 00:00:03.000 D:vertical A:start
+00:00:00.000 --> 00:00:03.000 D:vertical A:start
 I grew up in Eastern North Carolina, <b>Edgecombe</b> County
 
 NOTES
@@ -12,5 +12,5 @@ a note.
 
 2
 00:00:03.300 --> 00:00:07.800 A:start
-on a tobacco and dairy farm outside of 
+on a tobacco and dairy farm outside of
 Tarboro.

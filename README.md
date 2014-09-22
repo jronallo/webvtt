@@ -26,7 +26,7 @@ Based on this WebVTT:
 WEBVTT
 
 1
-00:00:00 --> 00:00:03.000 D:vertical A:start
+00:00:00.000 --> 00:00:03.000 D:vertical A:start
 I grew up in Eastern North Carolina, <b>Edgecombe</b> County
 
 2
@@ -41,7 +41,7 @@ You can do the following:
 require 'webvtt'
 vtt = Webvtt::File.new('path/to/file.vtt')
 vtt.cues.class    #=> Webvtt::Cue
-vtt.cues[0].start #=> '00:00:00'
+vtt.cues[0].start #=> '00:00:00.000'
 vtt.cues[0].end   #=> '00:00:03.000'
 vtt.cues[0].identifier #=> '1'
 vtt.cues[0].settings   #=> 'D:vertical A:start'

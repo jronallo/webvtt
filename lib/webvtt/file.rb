@@ -31,19 +31,19 @@ module Webvtt
 
       file_lines.each_with_index do |line,index|
         line.chomp!
-        
+
         next if webvtt_line?(line)
         if line.empty?
           if !collected_lines.empty? and !notes?(collected_lines)
-            add_a_cue(collected_lines) 
+            add_a_cue(collected_lines)
           end
           collected_lines = []
         elsif !line.empty? and file_lines.length == (index + 1)
           collected_lines << line
           add_a_cue(collected_lines)
         else
-          collected_lines << line          
-        end  
+          collected_lines << line
+        end
       end
     end
 
@@ -66,7 +66,7 @@ private
         cue_opts[:identifier] = collected_lines.first
         cue_opts[:cue_line] = collected_lines[1]
       end
-      cue_opts[:text] = collected_lines[2..-1].join('')
+      cue_opts[:text] = collected_lines[2..-1].join("\n")
       cues << Cue.new(cue_opts)
     end
 

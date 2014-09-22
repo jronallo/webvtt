@@ -16,12 +16,12 @@ class WebvttCueTest < Test::Unit::TestCase
   end
 
   test "parses an individual cue" do
-    cue = Webvtt::Cue.new(:identifier => "1", :cue_line => "00:00:00 --> 00:00:03.000 D:vertical A:start", :text => "I grew up in Eastern North Carolina, <b>Edgecombe</b> County")
+    cue = Webvtt::Cue.new(:identifier => "1", :cue_line => "00:00:00.000 --> 00:00:03.000 D:vertical A:start", :text => "I grew up in Eastern North Carolina, <b>Edgecombe</b> County")
     assert_equal '1', cue.identifier
-    assert_equal '00:00:00', cue.start
+    assert_equal '00:00:00.000', cue.start
     assert_equal '00:00:03.000', cue.end
     assert_equal 'D:vertical A:start', cue.settings
     assert_equal 'I grew up in Eastern North Carolina, <b>Edgecombe</b> County', cue.text
-  end  
+  end
 
 end
