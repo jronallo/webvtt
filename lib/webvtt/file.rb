@@ -71,7 +71,7 @@ private
     end
 
     def notes?(collected_lines)
-      if collected_lines.first.match(/^NOTES/)
+      if collected_lines.first.match(/^NOTE/)
         true
       else
         false
