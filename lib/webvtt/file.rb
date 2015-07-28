@@ -61,14 +61,12 @@ private
       cue_opts = {}
       if collected_lines.first.include?('-->')
         cue_opts[:identifier] = nil
-        cue_opts[:cue_line] = collected_lines.first
+        cue_opts[:cue_line] = collected_lines.shift
       elsif collected_lines[1].include?('-->')
-        cue_opts[:identifier] = collected_lines.first
-        cue_opts[:cue_line] = collected_lines[1]
+        cue_opts[:identifier] = collected_lines.shift
+        cue_opts[:cue_line] = collected_lines.shift
       end
-      if collected_lines[2..-1]
-        cue_opts[:text] = collected_lines[2..-1].join("\n")
-      end
+      cue_opts[:text] = collected_lines.join(' ')
       cues << Cue.new(cue_opts)
     end
 
