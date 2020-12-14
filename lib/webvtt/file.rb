@@ -2,7 +2,7 @@
 module Webvtt
   class File
 
-    attr_accessor :file, :cues
+    attr_accessor :file, :cues, :header_lines
 
     def initialize(input_file)
       if input_file.is_a?(String)
@@ -18,6 +18,7 @@ module Webvtt
         raise
       end
       @cues = []
+      @header_lines = []
       parse
     end
 
@@ -26,21 +27,31 @@ module Webvtt
       if !webvtt_line?(file.lines.first)
         raise Webvtt::MalformedError
       end
+      in_header = true
       collected_lines = []
       file_lines = file.dup.lines.to_a
 
       file_lines.each_with_index do |line,index|
         line.chomp!
 
-        next if webvtt_line?(line)
+        if webvtt_line?(line)
+          next
+        end
         if line.empty?
-          if !collected_lines.empty? and !notes?(collected_lines)
-            add_a_cue(collected_lines)
+          # If the line is empty then we can't be in the header anymore.
+          if in_header
+            in_header = false
+          else
+            if !collected_lines.empty? and !notes?(collected_lines)
+              add_a_cue(collected_lines)
+            end
+            collected_lines = []
           end
-          collected_lines = []
-        elsif !line.empty? and file_lines.length == (index + 1)
+        elsif !line.empty? and file_lines.length == (index + 1) # add our last cue
           collected_lines << line
           add_a_cue(collected_lines)
+        elsif in_header
+          header_lines << line
         else
           collected_lines << line
         end

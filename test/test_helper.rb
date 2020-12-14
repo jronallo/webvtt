@@ -2,4 +2,4 @@
 require 'rubygems'
 require 'test-unit'
 require 'webvtt'
-
+require 'byebug'
