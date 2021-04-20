@@ -1,9 +1,13 @@
 language: ruby
 rvm:
-  - "1.9.3"
   - "2.0.0"
-  - "2.1.1"
-  - "2.1.2"
-  - jruby-19mode # JRuby in 1.9 mode
+  - "2.1.10"
+  - "2.2.10"
+  - "2.3.8"
+  - "2.4.9"
+  - "2.5.7"
+  - "2.6.5"
+  - "2.7.0"
+
 # uncomment this line if your project needs to run something other than `rake`:
 script: rake test
