@@ -73,11 +73,12 @@ private
       if collected_lines.first.include?('-->')
         cue_opts[:identifier] = nil
         cue_opts[:cue_line] = collected_lines.first
+        cue_opts[:text] = collected_lines[1..-1].join("\n")
       elsif collected_lines[1].include?('-->')
         cue_opts[:identifier] = collected_lines.first
         cue_opts[:cue_line] = collected_lines[1]
+        cue_opts[:text] = collected_lines[2..-1].join("\n")
       end
-      cue_opts[:text] = collected_lines[2..-1].join("\n")
       cues << Cue.new(cue_opts)
     end
 
