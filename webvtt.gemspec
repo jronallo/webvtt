@@ -5,9 +5,10 @@ require "webvtt/version"
 Gem::Specification.new do |s|
   s.name        = "webvtt"
   s.version     = Webvtt::VERSION
+  s.licenses    = ['MIT']
   s.authors     = ["Jason Ronallo"]
   s.email       = ["jronallo@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/jronallo/webvtt"
   s.summary     = %q{WEBVTT file parser in Ruby}
   s.description = %q{WEBVTT file parser in Ruby}
 
