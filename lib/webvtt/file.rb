@@ -25,7 +25,7 @@ module Webvtt
     def parse
       remove_bom
       if !webvtt_line?(file.lines.first)
-        raise Webvtt::MalformedError
+        raise Webvtt::MalformedError, "Invalid WebVTT file format"
       end
       in_header = true
       collected_lines = []
